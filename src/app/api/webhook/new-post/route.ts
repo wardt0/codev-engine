@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { posts } from '@/db/schema';
 
@@ -58,7 +59,7 @@ export async function POST(request: Request) {
     const existingPost = await db
       .select()
       .from(posts)
-      .where((p) => p.slug === slug)
+      .where(eq(posts.slug, slug))
       .limit(1)
       .then((rows) => rows[0]);
 

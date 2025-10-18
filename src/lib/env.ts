@@ -52,7 +52,7 @@ function validateEnv() {
     return parsed;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const missingVars = error.errors.map((err) => {
+      const missingVars = error.issues.map((err) => {
         return `  ❌ ${err.path.join('.')}: ${err.message}`;
       });
 

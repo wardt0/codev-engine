@@ -43,7 +43,7 @@ export async function middleware(request: NextRequest) {
   // issues with users being randomly logged out.
 
   const {
-    data: { user },
+    data: { user }, // eslint-disable-line @typescript-eslint/no-unused-vars
   } = await supabase.auth.getUser();
 
   // Optionally protect routes (uncomment to enable)
